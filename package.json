@@ -1,6 +1,6 @@
 {
   "name": "aurelia-erp-common",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "A skeleton project with basic configuration for developing an Aurelia plugin in TypeScript that utilizes webpack",
   "keywords": [
     "aurelia",
@@ -9,17 +9,17 @@
     "typescript",
     "webpack"
   ],
-  "homepage": "https://github.com/aurelia-contrib/aurelia-skeleton-plugin-ts-webpack",
+  "homepage": "https://github.com/aurelia-contrib/aurelia-erp-common",
   "bugs": {
-    "url": "https://github.com/aurelia-contrib/aurelia-skeleton-plugin-ts-webpack/issues"
+    "url": "https://github.com/aurelia-contrib/aurelia-erp-common/issues"
   },
   "license": "MIT",
   "author": "KASSI Jean-Vinicnet <jeanvincent45@gmail.com>",
-  "main": "dist/commonjs/aurelia-skeleton-plugin-ts-webpack.js",
-  "typings": "dist/commonjs/aurelia-skeleton-plugin-ts-webpack.d.ts",
+  "main": "dist/commonjs/aurelia-erp-common.js",
+  "typings": "dist/commonjs/aurelia-erp-common.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aurelia-contrib/aurelia-skeleton-plugin-ts-webpack"
+    "url": "https://github.com/aurelia-contrib/aurelia-erp-common"
   },
   "scripts": {
     "lint": "cross-env ./node_modules/.bin/nps lint",
@@ -115,5 +115,16 @@
     },
     "peerDependencies": {},
     "dependencies": {}
+  },
+  "aurelia": {
+    "import": {
+      "dependencies": [
+        {
+          "name": "aurelia-erp-common",
+          "path": "../node_modules/aurelia-erp-common/dist/amd",
+          "main": "aurelia-erp-common"
+        }
+      ]
+    }
   }
 }
