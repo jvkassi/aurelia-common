@@ -11548,7 +11548,7 @@ System.register([], function (exports, module) {
             // require("packages/aurelia-erp-hotel");
             PLATFORM.moduleName('./index');
             // tslint:disable-next-line:completed-docs
-            let App = exports('App', class App {
+            let ErpCommon = exports('ErpCommon', class ErpCommon {
                 // private user: any = this.UserService.getInfos();
                 constructor(
                 // tslint:disable-next-line:no-shadowed-variable
@@ -11678,11 +11678,11 @@ System.register([], function (exports, module) {
                     });
                 }
             });
-            App = exports('App', __decorate([
+            ErpCommon = exports('ErpCommon', __decorate([
                 noView(),
                 autoinject(),
                 __metadata("design:paramtypes", [commonjs_1])
-            ], App));
+            ], ErpCommon));
 
         }
     };

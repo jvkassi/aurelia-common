@@ -11543,7 +11543,7 @@ var commonjs_2 = commonjs.configure;
 // require("packages/aurelia-erp-hotel");
 PLATFORM.moduleName('./index');
 // tslint:disable-next-line:completed-docs
-let App = class App {
+let ErpCommon = class ErpCommon {
     // private user: any = this.UserService.getInfos();
     constructor(
     // tslint:disable-next-line:no-shadowed-variable
@@ -11673,10 +11673,10 @@ let App = class App {
         });
     }
 };
-App = __decorate([
+ErpCommon = __decorate([
     noView(),
     autoinject(),
     __metadata("design:paramtypes", [commonjs_1])
-], App);
+], ErpCommon);
 
-export { App };
+export { ErpCommon };

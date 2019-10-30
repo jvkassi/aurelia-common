@@ -1,5 +1,5 @@
 import { AureliaConfiguration } from 'aurelia-configuration';
-export declare class App {
+export declare class ErpCommon {
     private AureliaConfiguration;
     private config;
     private routes;
