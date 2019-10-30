@@ -1,6 +1,6 @@
 {
   "name": "aurelia-erp-common",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "A skeleton project with basic configuration for developing an Aurelia plugin in TypeScript that utilizes webpack",
   "keywords": [
     "aurelia",
@@ -42,7 +42,10 @@
   "dependencies": {
     "aurelia-authentication": "^3.8.3",
     "aurelia-configuration": "^2.0.0",
-    "aurelia-orm": "^7.0.1"
+    "aurelia-dialog": "^2.0.0-rc.8",
+    "aurelia-notification": "^1.1.0",
+    "aurelia-orm": "^7.0.1",
+    "rollup-plugin-multi-entry": "^2.1.0"
   },
   "devDependencies": {
     "@types/bluebird-global": "^3.5.5",
