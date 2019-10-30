@@ -1,0 +1,17 @@
+<template>
+    <ux-dialog>
+        <ux-dialog-header>${config.title}</ux-dialog-header>
+        <ux-dialog-body>
+            <form submit.delegate="controller.ok(value)">
+                <paper-input-contuxner>
+                    <label>${config.label}</label>
+                    <input type.bind="config.type" required value.bind="value">
+                <button type="submit" class="aurelia-hide"></button>
+            </form>
+        </ux-dialog-body>
+        <ux-dialog-footer>
+            <button click.delegate="controller.cancel()">Annuler</button>
+            <button click.delegate="controller.ok(value)">Confirmer</button>
+        </ux-dialog-footer>
+    </ux-dialog>
+</template>
