@@ -1,6 +1,6 @@
 {
   "name": "aurelia-erp-common",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "A skeleton project with basic configuration for developing an Aurelia plugin in TypeScript that utilizes webpack",
   "keywords": [
     "aurelia",
