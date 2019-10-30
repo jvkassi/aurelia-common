@@ -1,5 +1,5 @@
 {
-  "name": "aurelia-plugin-skeleton-ts-webpack",
+  "name": "aurelia-erp-common",
   "version": "0.1.2",
   "description": "A skeleton project with basic configuration for developing an Aurelia plugin in TypeScript that utilizes webpack",
   "keywords": [
@@ -14,7 +14,7 @@
     "url": "https://github.com/aurelia-contrib/aurelia-skeleton-plugin-ts-webpack/issues"
   },
   "license": "MIT",
-  "author": "Fred Kleuver <fred@avurad.nl>",
+  "author": "KASSI Jean-Vinicnet <jeanvincent45@gmail.com>",
   "main": "dist/commonjs/aurelia-skeleton-plugin-ts-webpack.js",
   "typings": "dist/commonjs/aurelia-skeleton-plugin-ts-webpack.d.ts",
   "repository": {
@@ -115,16 +115,5 @@
     },
     "peerDependencies": {},
     "dependencies": {}
-  },
-  "aurelia": {
-    "import": {
-      "dependencies": [
-        {
-          "name": "aurelia-skeleton-plugin-ts-webpack",
-          "path": "../node_modules/aurelia-skeleton-plugin-ts-webpack/dist/amd",
-          "main": "aurelia-skeleton-plugin-ts-webpack"
-        }
-      ]
-    }
   }
 }

@@ -1,4 +1,4 @@
-import { configure } from '../../src';
+import { configure } from '../../src/index';
 
 describe('configure()', () => {
   it(`should set fxconfig.foo to 'bar'`, () => {
