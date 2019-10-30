@@ -11551,11 +11551,11 @@ define('aurelia-erp-common', ['exports'], function (exports) { 'use strict';
         // tslint:disable-next-line:no-shadowed-variable
         AureliaConfiguration) {
             this.AureliaConfiguration = AureliaConfiguration;
+            this.application = '';
             // // auth: any;
             // router: Router;
             // auth: AuthService;
             this.routes = Array();
-            this.application = '';
             // console.log(this.application);
             // this.auth = auth;
             this.config = this.AureliaConfiguration.get('apps').filter((x) => x.name == this.application)[0];
