@@ -2,16 +2,17 @@ import { AuthService } from 'aurelia-authentication';
 import { autoinject } from 'aurelia-framework';
 
 @autoinject()
-export class UserService {
-  user: any;
+export class User {
+
+  private user: any;
   constructor(private AuthService: AuthService) {}
 
-  public getInfos() {
+  private getInfos(): any {
     this.user = this.AuthService.getTokenPayload();
     return this.user && this.user.user;
   }
 
-  public logout() {
+  private logout(): void {
     this.AuthService.logout();
   }
 }

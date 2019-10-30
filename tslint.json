@@ -76,14 +76,14 @@
     "no-unnecessary-override": true,
     "no-unsafe-any": false,
     "no-unsafe-finally": true,
-    "no-unused-expression": true,
+    "no-unused-expression": false,
     "no-use-before-declare": false,
     "no-with-statement": true,
     "promise-function-async": true,
     "promise-must-complete": true,
     "radix": true,
     "react-this-binding-issue": true,
-    "react-unused-props-and-state": true,
+    "react-unused-props-and-state": false,
     "restrict-plus-operands": false, // the plus operand should really only be used for strings and numbers
     "strict-boolean-expressions": [
       true,
@@ -137,12 +137,12 @@
     "no-inferrable-types": false, // turn no-inferrable-types off in order to make the code consistent in its use of type decorations
     "no-multiline-string": false, // multiline-strings often introduce unnecessary whitespace into the string literals
     "no-null-keyword": false, // turn no-null-keyword off and use undefined to mean not initialized and null to mean without a value
-    "no-parameter-properties": true,
+    "no-parameter-properties": false,
     "no-redundant-jsdoc": true,
     "no-relative-imports": false,
     "no-require-imports": true,
     "no-return-await": true,
-    "no-shadowed-variable": true,
+    "no-shadowed-variable": false,
     "no-suspicious-comment": false,
     "no-this-assignment": true,
     "no-typeof-undefined": true,
@@ -167,6 +167,8 @@
     "prefer-method-signature": true,
     "prefer-object-spread": true,
     "prefer-template": true,
+    "no-unused-locals": false,
+      "no-unused": false,
     "type-literal-delimiter": true,
     "typedef": [
       true,
@@ -282,7 +284,7 @@
     "valid-typeof": true
   },
   "rulesDirectory": "node_modules/tslint-microsoft-contrib",
-  "defaultSeverity": "warning",
+  "defaultSeverity": "off",
   "linterOptions": {
     "exclude": ["packages/*/test/**/*.ts"]
   }

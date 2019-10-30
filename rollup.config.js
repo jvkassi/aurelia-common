@@ -3,6 +3,7 @@ import ts from 'rollup-plugin-typescript2';
 import resolve from 'rollup-plugin-node-resolve';
 import commonJS from 'rollup-plugin-commonjs';
 import uglify from 'rollup-plugin-uglify';
+import multiEntry from "rollup-plugin-multi-entry";
 
 const pkg = JSON.parse(readFileSync('package.json', 'utf-8'));
 
@@ -12,11 +13,14 @@ function when(predicate, opts) {
   return predicate ? opts : {};
 }
 
+
 function output(target, format, opts = {}) {
   return {
-    input: `src/${pkg.name}.ts`,
+    // input: `src/${pkg.name}.ts`,
+    input: 'src/**/*ts',
     output: { ...{ file: `dist/${mod}/${pkg.name}${minify ? '.min' : ''}.js`, format, name: pkg.name }, ...opts },
     plugins: [
+      multiEntry(),
       resolve(),
       commonJS({
         include: 'node_modules/**'

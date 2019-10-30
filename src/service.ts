@@ -1,19 +1,21 @@
 import { EntityManager } from "aurelia-orm";
 import { autoinject } from "aurelia-framework";
+
 @autoinject
-export class AppService {
-  protected entity = "";
+export class Service {
+
+  protected entity: string = '';
 
   constructor(protected EntityManager: EntityManager) {}
 
-  get(id = undefined) {
+  protected get(id = undefined) : any {
     if (id) {
       return this.EntityManager.getRepository(this.entity).find(id);
     }
     return this.EntityManager.getRepository(this.entity).find();
   }
 
-  getAll(filters = {}) {
+  protected getAll(filters = {}) : any {
     return this.EntityManager.getRepository(this.entity).find(filters);
   }
 }
