@@ -11545,7 +11545,7 @@ define('aurelia-erp-common', ['exports'], function (exports) { 'use strict';
     // require("packages/aurelia-erp-hotel");
     PLATFORM.moduleName('./index');
     // tslint:disable-next-line:completed-docs
-    exports.ErpCommon = class ErpCommon {
+    exports.App = class App {
         // private user: any = this.UserService.getInfos();
         constructor(
         // tslint:disable-next-line:no-shadowed-variable
@@ -11675,11 +11675,18 @@ define('aurelia-erp-common', ['exports'], function (exports) { 'use strict';
             });
         }
     };
-    exports.ErpCommon = __decorate([
+    exports.App = __decorate([
         noView(),
         autoinject(),
         __metadata("design:paramtypes", [commonjs_1])
-    ], exports.ErpCommon);
+    ], exports.App);
+
+    // import { Aurelia } from 'aurelia-framework';
+    function configure() {
+        // Aurelia.globalResources('./slick-pager');
+    }
+
+    exports.configure = configure;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

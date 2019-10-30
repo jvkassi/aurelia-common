@@ -1,12 +1,3 @@
-import { AureliaConfiguration } from 'aurelia-configuration';
-export declare class ErpCommon {
-    private AureliaConfiguration;
-    private config;
-    private routes;
-    private application;
-    constructor(AureliaConfiguration: AureliaConfiguration);
-    determineActivationStrategy(): string;
-    configureRouter(config: any): void;
-    private generateMenus;
-    private addCrudRoutes;
-}
+import { App } from './app';
+export declare function configure(): void;
+export { App };

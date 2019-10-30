@@ -3,6 +3,7 @@ System.register([], function (exports, module) {
     return {
         execute: function () {
 
+            exports('configure', configure);
             /*! *****************************************************************************
             Copyright (c) Microsoft Corporation. All rights reserved.
             Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -11548,7 +11549,7 @@ System.register([], function (exports, module) {
             // require("packages/aurelia-erp-hotel");
             PLATFORM.moduleName('./index');
             // tslint:disable-next-line:completed-docs
-            let ErpCommon = exports('ErpCommon', class ErpCommon {
+            let App = exports('App', class App {
                 // private user: any = this.UserService.getInfos();
                 constructor(
                 // tslint:disable-next-line:no-shadowed-variable
@@ -11678,11 +11679,16 @@ System.register([], function (exports, module) {
                     });
                 }
             });
-            ErpCommon = exports('ErpCommon', __decorate([
+            App = exports('App', __decorate([
                 noView(),
                 autoinject(),
                 __metadata("design:paramtypes", [commonjs_1])
-            ], ErpCommon));
+            ], App));
+
+            // import { Aurelia } from 'aurelia-framework';
+            function configure() {
+                // Aurelia.globalResources('./slick-pager');
+            }
 
         }
     };

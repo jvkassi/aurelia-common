@@ -11543,7 +11543,7 @@ var commonjs_2 = commonjs.configure;
 // require("packages/aurelia-erp-hotel");
 PLATFORM.moduleName('./index');
 // tslint:disable-next-line:completed-docs
-let ErpCommon = class ErpCommon {
+let App = class App {
     // private user: any = this.UserService.getInfos();
     constructor(
     // tslint:disable-next-line:no-shadowed-variable
@@ -11673,10 +11673,15 @@ let ErpCommon = class ErpCommon {
         });
     }
 };
-ErpCommon = __decorate([
+App = __decorate([
     noView(),
     autoinject(),
     __metadata("design:paramtypes", [commonjs_1])
-], ErpCommon);
+], App);
 
-export { ErpCommon };
+// import { Aurelia } from 'aurelia-framework';
+function configure() {
+    // Aurelia.globalResources('./slick-pager');
+}
+
+export { configure, App };
