@@ -1,6 +1,6 @@
 {
   "name": "aurelia-common",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A package full of common value converters used across my projects",
   "keywords": [
     "aurelia",
