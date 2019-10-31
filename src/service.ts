@@ -3,19 +3,18 @@ import { autoinject } from "aurelia-framework";
 
 @autoinject
 export class Service {
-
-  protected entity: string = '';
+  protected entity: string = "";
 
   constructor(protected EntityManager: EntityManager) {}
 
-  protected get(id = undefined) : any {
+  public get(id = undefined): any {
     if (id) {
       return this.EntityManager.getRepository(this.entity).find(id);
     }
     return this.EntityManager.getRepository(this.entity).find();
   }
 
-  protected getAll(filters = {}) : any {
+  public getAll(filters = {}): any {
     return this.EntityManager.getRepository(this.entity).find(filters);
   }
 }
