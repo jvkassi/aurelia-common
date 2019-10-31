@@ -35,7 +35,7 @@
     //"noEmitHelpers": false,
     //"noEmitOnError": false,
     //"noFallthroughCasesInSwitch": false,
-    //"noImplicitAny": false,
+    // "noImplicitAny": false,
     "noImplicitReturns": true, //default: false
     //"noImplicitThis": false,
     //"noImplicitUseStrict": false,

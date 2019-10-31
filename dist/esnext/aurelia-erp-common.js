@@ -1,3 +1,6 @@
+export * from '../../src/elements';
+export { ConvertManagerValueConverter, AutoCompleteCustomElement } from '../../src/elements';
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -1228,7 +1231,7 @@ var SingletonRegistration = (function () {
     return SingletonRegistration;
 }());
 
-var _aureliaDependencyInjection = /*#__PURE__*/Object.freeze({
+var aureliaDependencyInjection = /*#__PURE__*/Object.freeze({
     _emptyParameters: _emptyParameters,
     InvocationHandler: InvocationHandler,
     Container: Container,
@@ -1467,7 +1470,7 @@ function parseQueryString(queryString) {
   return queryParams;
 }
 
-var _aureliaPath = /*#__PURE__*/Object.freeze({
+var aureliaPath = /*#__PURE__*/Object.freeze({
     relativeToFile: relativeToFile,
     join: join,
     buildQueryString: buildQueryString,
@@ -6061,6 +6064,17 @@ var ClassObserver = function () {
 
 function hasDeclaredDependencies(descriptor) {
   return !!(descriptor && descriptor.get && descriptor.get.dependencies);
+}
+
+function computedFrom() {
+  for (var _len = arguments.length, rest = Array(_len), _key = 0; _key < _len; _key++) {
+    rest[_key] = arguments[_key];
+  }
+
+  return function (target, key, descriptor) {
+    descriptor.get.dependencies = rest;
+    return descriptor;
+  };
 }
 
 var ComputedExpression = function (_Expression19) {
@@ -12499,7 +12513,7 @@ var AureliaConfiguration = (function () {
     };
     AureliaConfiguration.prototype.loadConfig = function () {
         var _this = this;
-        return this.loadConfigFile(_aureliaPath.join(this.directory, this.config), function (data) { return _this.setAll(data); })
+        return this.loadConfigFile(aureliaPath.join(this.directory, this.config), function (data) { return _this.setAll(data); })
             .then(function () {
             if (_this._config_merge_object) {
                 _this.merge(_this._config_merge_object);
@@ -13329,7 +13343,7 @@ var Rest = exports.Rest = function () {
     var contentType = requestOptions.headers['Content-Type'] || requestOptions.headers['content-type'];
 
     if ((typeof body === 'undefined' ? 'undefined' : _typeof(body)) === 'object' && body !== null && contentType) {
-      requestOptions.body = /^application\/(.+\+)?json/.test(contentType.toLowerCase()) ? JSON.stringify(body) : (0, _aureliaPath.buildQueryString)(body);
+      requestOptions.body = /^application\/(.+\+)?json/.test(contentType.toLowerCase()) ? JSON.stringify(body) : (0, aureliaPath.buildQueryString)(body);
     }
 
     return this.client.fetch(path, requestOptions).then(function (response) {
@@ -13394,13 +13408,13 @@ function getRequestPath(resource, traditional, idOrCriteria, criteria) {
   var hasSlash = resource.slice(-1) === '/';
 
   if (typeof idOrCriteria === 'string' || typeof idOrCriteria === 'number') {
-    resource = '' + (0, _aureliaPath.join)(resource, String(idOrCriteria)) + (hasSlash ? '/' : '');
+    resource = '' + (0, aureliaPath.join)(resource, String(idOrCriteria)) + (hasSlash ? '/' : '');
   } else {
     criteria = idOrCriteria;
   }
 
   if ((typeof criteria === 'undefined' ? 'undefined' : _typeof(criteria)) === 'object' && criteria !== null) {
-    resource += '?' + (0, _aureliaPath.buildQueryString)(criteria, traditional);
+    resource += '?' + (0, aureliaPath.buildQueryString)(criteria, traditional);
   } else if (criteria) {
     resource += '' + (hasSlash ? '' : '/') + criteria + (hasSlash ? '/' : '');
   }
@@ -13520,7 +13534,7 @@ function configure(frameworkConfig, configOrConfigure) {
   config.configure(configOrConfigure);
 }
 
-var Endpoint = exports.Endpoint = (_dec = (0, _aureliaDependencyInjection.resolver)(), _dec(_class3 = function () {
+var Endpoint = exports.Endpoint = (_dec = (0, aureliaDependencyInjection.resolver)(), _dec(_class3 = function () {
   function Endpoint(key) {
     
 
@@ -15404,7 +15418,7 @@ function configure(aurelia, configOrConfigure) {
   config.configure(configOrConfigure);
 }
 
-var ViewManager = exports.ViewManager = (_dec = (0, _aureliaDependencyInjection.inject)(Config), _dec(_class2 = function () {
+var ViewManager = exports.ViewManager = (_dec = (0, aureliaDependencyInjection.inject)(Config), _dec(_class2 = function () {
   function ViewManager(config) {
     
 
@@ -15460,7 +15474,7 @@ var ResolvedViewStrategy = exports.ResolvedViewStrategy = (_dec2 = (0, aureliaTe
 
     compileInstruction.associatedModuleId = this.moduleId;
 
-    return viewEngine.loadViewFactory(this.moduleId ? (0, _aureliaPath.relativeToFile)(path, this.moduleId) : path, compileInstruction, loadContext);
+    return viewEngine.loadViewFactory(this.moduleId ? (0, aureliaPath.relativeToFile)(path, this.moduleId) : path, compileInstruction, loadContext);
   };
 
   return ResolvedViewStrategy;
@@ -15527,7 +15541,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var Repository = exports.Repository = (_dec = (0, _aureliaDependencyInjection.inject)(aureliaApi.Config), _dec(_class = function () {
+var Repository = exports.Repository = (_dec = (0, aureliaDependencyInjection.inject)(aureliaApi.Config), _dec(_class = function () {
   function Repository(clientConfig) {
     
 
@@ -15711,7 +15725,7 @@ var Repository = exports.Repository = (_dec = (0, _aureliaDependencyInjection.in
 
   return Repository;
 }()) || _class);
-var DefaultRepository = exports.DefaultRepository = (_dec2 = (0, _aureliaDependencyInjection.transient)(), _dec2(_class3 = function (_Repository) {
+var DefaultRepository = exports.DefaultRepository = (_dec2 = (0, aureliaDependencyInjection.transient)(), _dec2(_class3 = function (_Repository) {
   _inherits(DefaultRepository, _Repository);
 
   function DefaultRepository() {
@@ -15800,7 +15814,7 @@ var Metadata = exports.Metadata = (_temp = _class4 = function () {
 
   return Metadata;
 }(), _class4.key = 'spoonx:orm:metadata', _temp);
-var Entity = exports.Entity = (_dec3 = (0, _aureliaDependencyInjection.transient)(), _dec3(_class5 = function () {
+var Entity = exports.Entity = (_dec3 = (0, aureliaDependencyInjection.transient)(), _dec3(_class5 = function () {
   function Entity() {
     
 
@@ -16356,7 +16370,7 @@ function validation() {
   };
 }
 
-var EntityManager = exports.EntityManager = (_dec4 = (0, _aureliaDependencyInjection.inject)(_aureliaDependencyInjection.Container), _dec4(_class6 = function () {
+var EntityManager = exports.EntityManager = (_dec4 = (0, aureliaDependencyInjection.inject)(aureliaDependencyInjection.Container), _dec4(_class6 = function () {
   function EntityManager(container) {
     
 
@@ -21503,7 +21517,7 @@ var _dec, _class;
 
 
 
-var AuthenticatedValueConverter = exports.AuthenticatedValueConverter = (_dec = (0, _aureliaDependencyInjection.inject)(aureliaAuthentication.AuthService), _dec(_class = function () {
+var AuthenticatedValueConverter = exports.AuthenticatedValueConverter = (_dec = (0, aureliaDependencyInjection.inject)(aureliaAuthentication.AuthService), _dec(_class = function () {
   function AuthenticatedValueConverter(authService) {
     
 
@@ -21538,7 +21552,7 @@ var _dec, _class;
 
 
 
-var AuthenticatedFilterValueConverter = exports.AuthenticatedFilterValueConverter = (_dec = (0, _aureliaDependencyInjection.inject)(aureliaAuthentication.AuthService), _dec(_class = function () {
+var AuthenticatedFilterValueConverter = exports.AuthenticatedFilterValueConverter = (_dec = (0, aureliaDependencyInjection.inject)(aureliaAuthentication.AuthService), _dec(_class = function () {
   function AuthenticatedFilterValueConverter(authService) {
     
 
@@ -21767,7 +21781,7 @@ var buildPopupWindowOptions = function buildPopupWindowOptions(options) {
 var parseUrl = function parseUrl(url) {
   var hash = url.hash.charAt(0) === '#' ? url.hash.substr(1) : url.hash;
 
-  return (0, _extend2.default)(true, {}, (0, _aureliaPath.parseQueryString)(url.search), (0, _aureliaPath.parseQueryString)(hash));
+  return (0, _extend2.default)(true, {}, (0, aureliaPath.parseQueryString)(url.search), (0, aureliaPath.parseQueryString)(hash));
 };
 
 var logger = exports.logger = (0, aureliaLogging.getLogger)('aurelia-authentication');
@@ -21973,7 +21987,7 @@ var BaseConfig = exports.BaseConfig = function () {
   }
 
   BaseConfig.prototype.joinBase = function joinBase(url) {
-    return (0, _aureliaPath.join)(this.baseUrl, url);
+    return (0, aureliaPath.join)(this.baseUrl, url);
   };
 
   BaseConfig.prototype.configure = function configure(incoming) {
@@ -22100,7 +22114,7 @@ function randomState() {
   return encodeURIComponent(rand);
 }
 
-var Storage = exports.Storage = (_dec = (0, _aureliaDependencyInjection.inject)(BaseConfig), _dec(_class2 = function () {
+var Storage = exports.Storage = (_dec = (0, aureliaDependencyInjection.inject)(BaseConfig), _dec(_class2 = function () {
   function Storage(config) {
     
 
@@ -22121,7 +22135,7 @@ var Storage = exports.Storage = (_dec = (0, _aureliaDependencyInjection.inject)(
 
   return Storage;
 }()) || _class2);
-var AuthLock = exports.AuthLock = (_dec2 = (0, _aureliaDependencyInjection.inject)(Storage, BaseConfig), _dec2(_class3 = function () {
+var AuthLock = exports.AuthLock = (_dec2 = (0, aureliaDependencyInjection.inject)(Storage, BaseConfig), _dec2(_class3 = function () {
   function AuthLock(storage, config) {
     
 
@@ -22215,7 +22229,7 @@ var AuthLock = exports.AuthLock = (_dec2 = (0, _aureliaDependencyInjection.injec
 
   return AuthLock;
 }()) || _class3);
-var OAuth1 = exports.OAuth1 = (_dec3 = (0, _aureliaDependencyInjection.inject)(Storage, Popup, BaseConfig), _dec3(_class4 = function () {
+var OAuth1 = exports.OAuth1 = (_dec3 = (0, aureliaDependencyInjection.inject)(Storage, Popup, BaseConfig), _dec3(_class4 = function () {
   function OAuth1(storage, popup, config) {
     
 
@@ -22242,7 +22256,7 @@ var OAuth1 = exports.OAuth1 = (_dec3 = (0, _aureliaDependencyInjection.inject)(S
     }
 
     return this.config.client.post(serverUrl).then(function (response) {
-      var url = provider.authorizationEndpoint + '?' + (0, _aureliaPath.buildQueryString)(response);
+      var url = provider.authorizationEndpoint + '?' + (0, aureliaPath.buildQueryString)(response);
 
       if (_this4.config.platform === 'mobile') {
         _this4.popup = _this4.popup.open(url, provider.name, provider.popupOptions);
@@ -22268,7 +22282,7 @@ var OAuth1 = exports.OAuth1 = (_dec3 = (0, _aureliaDependencyInjection.inject)(S
 
   return OAuth1;
 }()) || _class4);
-var OAuth2 = exports.OAuth2 = (_dec4 = (0, _aureliaDependencyInjection.inject)(Storage, Popup, BaseConfig), _dec4(_class5 = function () {
+var OAuth2 = exports.OAuth2 = (_dec4 = (0, aureliaDependencyInjection.inject)(Storage, Popup, BaseConfig), _dec4(_class5 = function () {
   function OAuth2(storage, popup, config) {
     
 
@@ -22304,7 +22318,7 @@ var OAuth2 = exports.OAuth2 = (_dec4 = (0, _aureliaDependencyInjection.inject)(S
       this.storage.set(stateName, provider.state);
     }
 
-    var url = provider.authorizationEndpoint + '?' + (0, _aureliaPath.buildQueryString)(this.buildQuery(provider));
+    var url = provider.authorizationEndpoint + '?' + (0, aureliaPath.buildQueryString)(this.buildQuery(provider));
     var popup = this.popup.open(url, provider.name, provider.popupOptions);
     var openPopup = this.config.platform === 'mobile' ? popup.eventListener(provider.redirectUri) : popup.pollPopup();
 
@@ -22364,7 +22378,7 @@ var OAuth2 = exports.OAuth2 = (_dec4 = (0, _aureliaDependencyInjection.inject)(S
 
   OAuth2.prototype.close = function close(options) {
     var provider = (0, _extend2.default)(true, {}, this.defaults, options);
-    var url = provider.logoutEndpoint + '?' + (0, _aureliaPath.buildQueryString)(this.buildLogoutQuery(provider));
+    var url = provider.logoutEndpoint + '?' + (0, aureliaPath.buildQueryString)(this.buildLogoutQuery(provider));
     var popup = this.popup.open(url, provider.name, provider.popupOptions);
     var openPopup = this.config.platform === 'mobile' ? popup.eventListener(provider.postLogoutRedirectUri) : popup.pollPopup();
 
@@ -22397,7 +22411,7 @@ function camelCase(name) {
   });
 }
 
-var Authentication = exports.Authentication = (_dec5 = (0, _aureliaDependencyInjection.inject)(Storage, BaseConfig, OAuth1, OAuth2, AuthLock), _dec6 = (0, aureliaMetadata.deprecated)({ message: 'Use baseConfig.loginRoute instead.' }), _dec7 = (0, aureliaMetadata.deprecated)({ message: 'Use baseConfig.loginRedirect instead.' }), _dec8 = (0, aureliaMetadata.deprecated)({ message: 'Use baseConfig.joinBase(baseConfig.loginUrl) instead.' }), _dec9 = (0, aureliaMetadata.deprecated)({ message: 'Use baseConfig.joinBase(baseConfig.signupUrl) instead.' }), _dec10 = (0, aureliaMetadata.deprecated)({ message: 'Use baseConfig.joinBase(baseConfig.profileUrl) instead.' }), _dec11 = (0, aureliaMetadata.deprecated)({ message: 'Use .getAccessToken() instead.' }), _dec5(_class6 = (_class7 = function () {
+var Authentication = exports.Authentication = (_dec5 = (0, aureliaDependencyInjection.inject)(Storage, BaseConfig, OAuth1, OAuth2, AuthLock), _dec6 = (0, aureliaMetadata.deprecated)({ message: 'Use baseConfig.loginRoute instead.' }), _dec7 = (0, aureliaMetadata.deprecated)({ message: 'Use baseConfig.loginRedirect instead.' }), _dec8 = (0, aureliaMetadata.deprecated)({ message: 'Use baseConfig.joinBase(baseConfig.loginUrl) instead.' }), _dec9 = (0, aureliaMetadata.deprecated)({ message: 'Use baseConfig.joinBase(baseConfig.signupUrl) instead.' }), _dec10 = (0, aureliaMetadata.deprecated)({ message: 'Use baseConfig.joinBase(baseConfig.profileUrl) instead.' }), _dec11 = (0, aureliaMetadata.deprecated)({ message: 'Use .getAccessToken() instead.' }), _dec5(_class6 = (_class7 = function () {
   function Authentication(storage, config, oAuth1, oAuth2, auth0Lock) {
     
 
@@ -22664,9 +22678,9 @@ var Authentication = exports.Authentication = (_dec5 = (0, _aureliaDependencyInj
     }
 
     if (typeof redirectUrl === 'string') {
-      aureliaPal.PLATFORM.location.href = encodeURI(redirectUrl + (query ? '?' + (0, _aureliaPath.buildQueryString)(query) : ''));
+      aureliaPal.PLATFORM.location.href = encodeURI(redirectUrl + (query ? '?' + (0, aureliaPath.buildQueryString)(query) : ''));
     } else if (defaultRedirectUrl) {
-      aureliaPal.PLATFORM.location.href = defaultRedirectUrl + (query ? '?' + (0, _aureliaPath.buildQueryString)(query) : '');
+      aureliaPal.PLATFORM.location.href = defaultRedirectUrl + (query ? '?' + (0, aureliaPath.buildQueryString)(query) : '');
     }
   };
 
@@ -22703,7 +22717,7 @@ function getPayload(token) {
   return payload;
 }
 
-var AuthService = exports.AuthService = (_dec12 = (0, _aureliaDependencyInjection.inject)(Authentication, BaseConfig, aureliaTemplatingResources.BindingSignaler, aureliaEventAggregator.EventAggregator), _dec13 = (0, aureliaMetadata.deprecated)({ message: 'Use .getAccessToken() instead.' }), _dec12(_class8 = (_class9 = function () {
+var AuthService = exports.AuthService = (_dec12 = (0, aureliaDependencyInjection.inject)(Authentication, BaseConfig, aureliaTemplatingResources.BindingSignaler, aureliaEventAggregator.EventAggregator), _dec13 = (0, aureliaMetadata.deprecated)({ message: 'Use .getAccessToken() instead.' }), _dec12(_class8 = (_class9 = function () {
   function AuthService(authentication, config, bindingSignaler, eventAggregator) {
     var _this8 = this;
 
@@ -23106,7 +23120,7 @@ var AuthService = exports.AuthService = (_dec12 = (0, _aureliaDependencyInjectio
 
   return AuthService;
 }(), (_applyDecoratedDescriptor(_class9.prototype, 'getCurrentToken', [_dec13], Object.getOwnPropertyDescriptor(_class9.prototype, 'getCurrentToken'), _class9.prototype)), _class9)) || _class8);
-var AuthenticateStep = exports.AuthenticateStep = (_dec14 = (0, _aureliaDependencyInjection.inject)(AuthService), _dec14(_class11 = function () {
+var AuthenticateStep = exports.AuthenticateStep = (_dec14 = (0, aureliaDependencyInjection.inject)(AuthService), _dec14(_class11 = function () {
   function AuthenticateStep(authService) {
     
 
@@ -23134,7 +23148,7 @@ var AuthenticateStep = exports.AuthenticateStep = (_dec14 = (0, _aureliaDependen
 
   return AuthenticateStep;
 }()) || _class11);
-var AuthorizeStep = exports.AuthorizeStep = (_dec15 = (0, _aureliaDependencyInjection.inject)(AuthService), _dec15(_class12 = function () {
+var AuthorizeStep = exports.AuthorizeStep = (_dec15 = (0, aureliaDependencyInjection.inject)(AuthService), _dec15(_class12 = function () {
   function AuthorizeStep(authService) {
     
 
@@ -23164,7 +23178,7 @@ var AuthorizeStep = exports.AuthorizeStep = (_dec15 = (0, _aureliaDependencyInje
 
   return AuthorizeStep;
 }()) || _class12);
-var FetchConfig = exports.FetchConfig = (_dec16 = (0, _aureliaDependencyInjection.inject)(aureliaFetchClient.HttpClient, aureliaApi.Config, AuthService, BaseConfig), _dec16(_class13 = function () {
+var FetchConfig = exports.FetchConfig = (_dec16 = (0, aureliaDependencyInjection.inject)(aureliaFetchClient.HttpClient, aureliaApi.Config, AuthService, BaseConfig), _dec16(_class13 = function () {
   function FetchConfig(httpClient, clientConfig, authService, config) {
     
 
@@ -23384,9 +23398,625 @@ User = __decorate([
     __metadata("design:paramtypes", [aureliaAuthentication_4])
 ], User);
 
-// import { Aurelia } from 'aurelia-framework';
-function configure$3() {
-    // Aurelia.globalResources('./slick-pager');
+function configure$3(config) {
+    config.container
+        .get(aureliaViewManager_3)
+        .configureNamespace("spoonx/datatable", {
+        map: {
+            datatable: PLATFORM.moduleName("./elements/aurelia-datatable/datatable.html")
+        }
+    })
+        .configureNamespace("aurelia-pager", {
+        framework: "aurelia",
+        map: {
+            pager: PLATFORM.moduleName("./elements/aurelia-pager/pager.html")
+        }
+    })
+        .configureNamespace("spoonx/form", {
+        map: {
+            "aurelia-form": PLATFORM.moduleName("./elements/aurelia-form/aurelia-form.html"),
+            "entity-form": PLATFORM.moduleName("./elements/aurelia-form/entity-form.html"),
+            "form-element": PLATFORM.moduleName("./elements/aurelia-form/form-element.html"),
+            "form-label": PLATFORM.moduleName("./elements/aurelia-form/form-label.html"),
+            "form-button": PLATFORM.moduleName("./elements/aurelia-form/form-button.html"),
+            "form-help": PLATFORM.moduleName("./elements/aurelia-form/form-help.html"),
+            "form-group": PLATFORM.moduleName("./elements/aurelia-form/form-group.html"),
+            "form-checkbox": PLATFORM.moduleName("./elements/aurelia-form/form-checkbox.html"),
+            "form-association": PLATFORM.moduleName("./elements/aurelia-form/form-association.html"),
+            "form-error": PLATFORM.moduleName("./elements/aurelia-form/form-error.html"),
+            "form-input": PLATFORM.moduleName("./elements/aurelia-form/form-input.html"),
+            "form-radio": PLATFORM.moduleName("./elements/aurelia-form/form-radio.html"),
+            "form-select": PLATFORM.moduleName("./elements/aurelia-form/form-select.html"),
+            "form-textarea": PLATFORM.moduleName("./elements/aurelia-form/form-textarea.html")
+        }
+    })
+        .configureNamespace("spoonx/orm", {
+        framework: "bulma",
+        map: {
+            "association-select": PLATFORM.moduleName("./elements/aurelia-orm/association-select.html"),
+            paged: PLATFORM.moduleName("./elements/aurelia-orm/paged.html")
+        }
+    });
 }
+
+exports.__esModule = true;
+var ColumnsFilterValueConverter = (exports.ColumnsFilterValueConverter = (function () {
+    function ColumnsFilterValueConverter() { }
+    ColumnsFilterValueConverter.prototype.toView = function toView(array) {
+        return array.filter(function (item) {
+            return item.column.indexOf(".") === -1;
+        });
+    };
+    return ColumnsFilterValueConverter;
+})());
+
+let ConvertManagerValueConverter = class ConvertManagerValueConverter {
+    constructor(viewResources$$1) {
+        this.viewResources = viewResources$$1;
+        this.logger = getLogger("aurelia-datatable");
+    }
+    runConverter(value, converter, convertParams, rowData) {
+        let valueConverter$$1 = this.viewResources.getValueConverter(converter);
+        if (valueConverter$$1) {
+            return valueConverter$$1.toView(value, convertParams, rowData);
+        }
+        this.logger.error('No ValueConverter named "' + converter + '" was found!');
+        return value;
+    }
+    toView(value, converters, rowData) {
+        if (!converters) {
+            return value;
+        }
+        if (typeof converters === "string") {
+            converters = converters.split(" | ");
+        }
+        for (let converter of converters) {
+            let index = converter.indexOf(":");
+            if (index < 0) {
+                value = this.runConverter(value, converter, null, rowData);
+                continue;
+            }
+            let name = converter.slice(0, index);
+            let param = this.parseParams(converter.slice(index + 1).trim());
+            value = this.runConverter(value, name, param, rowData);
+        }
+        return value;
+    }
+    parseParams(str) {
+        if (!str) {
+            return null;
+        }
+        if (typer.detect(str) === "string" && str[0] !== "{") {
+            return str.substr(1, str.length - 2);
+        }
+        return typer.cast(str);
+    }
+};
+ConvertManagerValueConverter = __decorate([
+    inject(ViewResources),
+    __metadata("design:paramtypes", [Object])
+], ConvertManagerValueConverter);
+
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css = ".dropdown-menu li {\n  display: block;\n  padding: 0 !important;\n}\n\n.dropdown-menu li a {\n  display: block;\n  padding: 2px 10px;\n}\n";
+styleInject(css);
+
+const logger$5 = console;
+let AutoCompleteCustomElement = class AutoCompleteCustomElement {
+    /**
+     * Autocomplete constructor.
+     *
+     * @param {Config}  api
+     * @param {Element} element
+     */
+    constructor(api, element) {
+        this.lastFindPromise = false;
+        // the query string is set after selecting an option. To avoid this
+        // triggering a new query we set the justSelected to true. When true it will
+        // avoid performing a query until it is toggled of.
+        this.justSelected = false;
+        // Holds the value last used to perform a search
+        this.previousValue = null;
+        // Simple property that maintains if this is the initial (first) request.
+        this.initial = true;
+        this.hasFocus = false;
+        //
+        this.offline = false;
+        this.showEdit = false;
+        this.showNew = false;
+        this.alwaysQuery = false;
+        // How many characters are required to type before starting a search.
+        this.minInput = 0;
+        // the name of the input element
+        this.name = "";
+        // The max amount of results to return. (optional)
+        this.limit = 5;
+        // Debounce value
+        this.debounce = 100;
+        // initial value
+        this.initValue = "";
+        // The string to be used to do a contains search with. By default it will look if the name contains this value.
+        this.value = "";
+        // The property to query on.
+        this.attribute = "name";
+        // Used to pass the result of the selected value to the user's view model
+        this.result = null;
+        // The results returned from the endpoint. These can be observed and mutated.
+        this.results = [];
+        // Which relations to populate for results
+        this.populate = "";
+        // The label to show in the footer. Gets pulled through aurelia-i18n.
+        this.footerLabel = "Create";
+        // Never, always or no-results
+        this.footerVisibility = "never";
+        // Used to determine the string to be shown as option label
+        this.label = (result) => {
+            return typeof result === "object" && result !== null
+                ? result[this.attribute]
+                : result;
+        };
+        // Input field's placeholder
+        this.placeholder = "Search";
+        // Sort method that takes a list and returns a sorted list. No sorting by default.
+        this.sort = (items) => items;
+        // Used to make the criteria more specific
+        this.criteria = {};
+        this.element = element;
+        this.apiEndpoint = api;
+        this.application = location.hash.split("/")[2];
+    }
+    get showFooter() {
+        let visibility = this.footerVisibility;
+        return (visibility === "always" ||
+            (visibility === "no-results" &&
+                this.value &&
+                this.value.length &&
+                (!this.results || !this.results.length)));
+    }
+    /**
+     * Bind callback.
+     *
+     * @returns {void}
+     */
+    bind() {
+        if (!this.resource && !this.items) {
+            return logger$5.error("auto complete requires resource or items bindable to be defined");
+        }
+        this.value = this.label(this.result);
+        this.apiEndpoint = this.apiEndpoint.getEndpoint(this.endpoint);
+    }
+    /**
+     * Set focus on dropdown.
+     *
+     * @param {boolean} value
+     * @param {Event}   [event]
+     *
+     * @returns {boolean}
+     */
+    setFocus(value, event = null) {
+        function isDescendant(parent$$1, child$$1) {
+            let node = child$$1.parentNode;
+            while (node !== null) {
+                if (node === parent$$1) {
+                    return true;
+                }
+                node = node.parentNode;
+            }
+            return false;
+        }
+        // console.log(event);
+        // If descendant, don't toggle dropdown so that other listeners will be called.
+        if (event &&
+            event.relatedTarget &&
+            isDescendant(this.element, event.relatedTarget)) {
+            return true;
+        }
+        if (!this.hasEnoughCharacters()) {
+            this.hasFocus = false;
+            return true;
+        }
+        if (value) {
+            this.valueChanged();
+        }
+        this.hasFocus = value;
+        return false;
+    }
+    /**
+     * returns HTML that wraps matching substrings with strong tags.
+     * If not a "stringable" it returns an empty string.
+     *
+     * @param {Object} result
+     *
+     * @returns {String}
+     */
+    labelWithMatches(result) {
+        let label = this.label(result);
+        if (typeof label !== "string") {
+            return "";
+        }
+        return label.replace(this.regex, match => {
+            return `<strong>${match}</strong>`;
+        });
+    }
+    /**
+     * Handle keyUp events from value.
+     *
+     * @param {Event} event
+     *
+     * @returns {*}
+     */
+    handleKeyUp(event) {
+        if (event.keyCode !== 27) {
+            return;
+        }
+        if (this.hasFocus) {
+            event.stopPropagation();
+        }
+        this.setFocus(false);
+        return true;
+    }
+    /**
+     * Handle keyDown events from value.
+     *
+     * @param {Event} event
+     *
+     * @returns {*}
+     */
+    handleKeyDown(event) {
+        if (event.keyCode === 27) {
+            return;
+        }
+        if (event.keyCode === 40 || event.keyCode === 38) {
+            this.selected = this.nextFoundResult(this.selected, event.keyCode === 38);
+            return event.preventDefault();
+        }
+        if (event.keyCode === 9 || event.keyCode === 13) {
+            if (this.hasFocus) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            this.onSelect();
+        }
+        else {
+            this.setFocus(true);
+        }
+        return true;
+    }
+    /**
+     * Get the next result in the list.
+     *
+     * @param {Object}  current    selected item
+     * @param {Boolean} [reversed] when true gets the previous instead
+     *
+     * @returns {Object} the next of previous item
+     */
+    nextFoundResult(current, reversed) {
+        let index = (this.results.indexOf(current) + (reversed ? -1 : 1)) %
+            this.results.length;
+        if (index < 0) {
+            index = this.results.length - 1;
+        }
+        return this.results[index];
+    }
+    /**
+     * Set the text in the input to that of the selected item and set the
+     * selected item as the value. Then hide the results(dropdown)
+     *
+     * @param {Object} [result] when defined uses the result instead of the this.selected value
+     *
+     * @returns {boolean}
+     */
+    onSelect(result = null) {
+        // console.log(result);
+        result = arguments.length === 0 ? this.selected : result;
+        this.justSelected = true;
+        this.value = this.label(result);
+        this.previousValue = this.value;
+        this.result = result;
+        // this.initValue = '';
+        this.selected = this.result.id || this.result.idx;
+        this.setFocus(false);
+        return true;
+    }
+    /**
+     * when search string changes perform a request, assign it to results
+     * and select the first result by default.
+     *
+     * @returns {Promise}
+     */
+    valueChanged() {
+        if (!this.shouldPerformRequest()) {
+            // console.log('req', this.resource)
+            return Promise.resolve();
+        }
+        if (this.hasEnoughCharacters() && this.items) {
+            // console.log('req chd', this.resource)
+            this.results = [];
+            // console.log(this.items)
+            this.results = this.sort(this.filter(this.items));
+            return Promise.resolve();
+        }
+        this.result = null;
+        // when resource is not defined it will not perform a request. Instead it
+        // will search for the first items that pass the predicate
+        if (this.items) {
+            this.results = this.sort(this.filter(this.items));
+            return Promise.resolve();
+        }
+        let lastFindPromise = this.findResults(this.searchQuery(this.value)).then((results) => {
+            if (this.lastFindPromise !== lastFindPromise) {
+                return;
+            }
+            this.previousValue = this.value;
+            this.lastFindPromise = false;
+            this.results = this.sort(results || []);
+            if (this.results.length !== 0) ;
+        });
+        this.lastFindPromise = lastFindPromise;
+        return;
+    }
+    /**
+     * returns a list of length that is smaller or equal to the limit. The
+     * default predicate is based on the regex
+     *
+     * @param {Object[]} items
+     *
+     * @returns {Object[]}
+     */
+    filter(items) {
+        let results = [];
+        items.some((item) => {
+            // add an item if it matches
+            if (this.itemMatches(item)) {
+                results.push(item);
+            }
+            return results.length >= this.limit;
+        });
+        return results;
+    }
+    /**
+     * returns true when the finding of matching results should continue
+     *
+     * @param {*} item
+     *
+     * @return {Boolean}
+     */
+    itemMatches(item) {
+        // search matches if value
+        if (this.value) {
+            return this.regex.test(this.label(item));
+        }
+        else {
+            return true;
+        }
+    }
+    get regex() {
+        return new RegExp(this.value, "gi");
+    }
+    /**
+     * returns true when a request will be performed on a search change
+     *
+     * @returns {Boolean}
+     */
+    shouldPerformRequest() {
+        if (this.alwaysQuery) {
+            return true;
+        }
+        if (this.justSelected === true) {
+            this.justSelected = false;
+            return false;
+        }
+        if (this.initial) {
+            this.initial = false;
+            return true;
+        }
+        return this.value !== this.previousValue;
+    }
+    /**
+     * Returns whether or not value has enough characters (meets minInput).
+     *
+     * @returns {boolean}
+     */
+    hasEnoughCharacters() {
+        return ((this.value && this.value.length) || 0) >= this.minInput;
+    }
+    /**
+     * @param {Object} query a waterline query object
+     *
+     * @returns {Promise} which resolves to the found results
+     */
+    findResults(query) {
+        return this.apiEndpoint
+            .find(this.resource, query)
+            .catch((err) => logger$5.error("not able to find results", err));
+    }
+    /**
+     * Emit custom event, or call function depending on supplied value.
+     *
+     * @param {string} value
+     */
+    onFooterSelected(value) {
+        if (typeof this.footerSelected === "function") {
+            this.footerSelected(value);
+            return;
+        }
+        this.element.dispatchEvent(DOM.createCustomEvent("footer-selected", {
+            detail: {
+                value
+            }
+        }));
+    }
+    /**
+     * Takes a string and converts to to a waterline query object that is used to
+     * perform a forgiving search.
+     *
+     * @param {String} string the string to search with
+     *
+     * @returns {Object} a waterline query object
+     */
+    searchQuery(string) {
+        let mergedWhere = Object.assign({
+            [this.attribute]: {
+                contains: string
+            }
+        }, this.criteria);
+        let query = {
+            populate: this.populate || "",
+            where: mergedWhere,
+            limit: 30
+        };
+        // only assign limit to query if it is defined. Allows to default to server
+        // limit when limit bindable is set to falsy value
+        if (this.limit) {
+            query.limit = this.limit;
+        }
+        return query;
+    }
+    activate() {
+        this.valueChanged();
+    }
+};
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "showEdit", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "showNew", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "alwaysQuery", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "minInput", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "name", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "limit", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "debounce", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "initValue", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "resource", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "items", void 0);
+__decorate([
+    bindable({
+        defaultBindingMode: bindingMode.twoWay
+    }),
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "value", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "selected", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "attribute", void 0);
+__decorate([
+    bindable({
+        defaultBindingMode: bindingMode.twoWay
+    }),
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "result", void 0);
+__decorate([
+    bindable({
+        defaultBindingMode: bindingMode.twoWay
+    }),
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "results", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "populate", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "footerLabel", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "footerSelected", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "footerVisibility", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "label", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "endpoint", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "placeholder", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "sort", void 0);
+__decorate([
+    bindable,
+    __metadata("design:type", Object)
+], AutoCompleteCustomElement.prototype, "criteria", void 0);
+__decorate([
+    computedFrom("results", "value"),
+    __metadata("design:type", Object),
+    __metadata("design:paramtypes", [])
+], AutoCompleteCustomElement.prototype, "showFooter", null);
+__decorate([
+    computedFrom("value"),
+    __metadata("design:type", Object),
+    __metadata("design:paramtypes", [])
+], AutoCompleteCustomElement.prototype, "regex", null);
+AutoCompleteCustomElement = __decorate([
+    inject(aureliaApi_2, DOM.Element),
+    __metadata("design:paramtypes", [Object, Object])
+], AutoCompleteCustomElement);
 
 export { App, configure$3 as configure, Service, User };

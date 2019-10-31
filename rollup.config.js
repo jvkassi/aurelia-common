@@ -4,6 +4,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonJS from 'rollup-plugin-commonjs';
 import uglify from 'rollup-plugin-uglify';
 import multiEntry from "rollup-plugin-multi-entry";
+import postcss from "rollup-plugin-postcss";
 
 const pkg = JSON.parse(readFileSync('package.json', 'utf-8'));
 
@@ -22,6 +23,7 @@ function output(target, format, opts = {}) {
     plugins: [
       multiEntry(),
       resolve(),
+      postcss(),
       commonJS({
         include: 'node_modules/**'
       }),

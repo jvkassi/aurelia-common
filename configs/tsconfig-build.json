@@ -1,8 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "noEmit": false,
     "declaration": true,
     "noUnusedLocals": false,
+    "noImplicitAny": false,
     "noUnusedParameters": true,
     "strict": true,
     "stripInternal": true,

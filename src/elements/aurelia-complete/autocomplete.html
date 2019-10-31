@@ -1,0 +1,95 @@
+<template>
+  <div class="field is-grouped ">
+    <div class="control is-expanded has-icons-right">
+      <div class="dropdown open ">
+        <!-- <span id="val">
+          ${value.length}
+        </span>
+        <span id="initV">
+          ${initValue.length}
+        </span> -->
+        <!-- name.bind="name" -->
+        <span class="icon is-small is-right">
+         <i class="fa fa-caret-down"></i>
+       </span>
+        <input
+          class="input"
+          if.bind="initValue.length > 0 && !value"
+          class="form-control dropdown-toggle"
+          value.bind="initValue & debounce:debounce"
+          placeholder="${placeholder | t}"
+          type="text"
+          autocomplete="off"
+          aria-haspopup="true"
+          keydown.trigger="handleKeyDown($event)"
+          keyup.trigger="handleKeyUp($event)"
+          focus.trigger="setFocus(true, $event)"
+          blur.trigger="setFocus(false, $event)"
+          aria-expanded="true"
+        >
+    <input
+      class="input"
+      if.bind="(initValue.length > 0 && value.length > 0) || initValue.length == 0 "
+      class="form-control dropdown-toggle"
+      value.bind="value & debounce:debounce"
+      placeholder="${placeholder | t}"
+      type="text"
+      autocomplete="off"
+      aria-haspopup="true"
+      keydown.trigger="handleKeyDown($event)"
+      keyup.trigger="handleKeyUp($event)"
+      focus.trigger="setFocus(true, $event)"
+      blur.trigger="setFocus(false, $event)"
+      aria-expanded="true"
+    >
+    </input>
+
+    <ul show.bind="hasFocus" class="has-shadow dropdown-menu">
+      <li if.bind="lastFindPromise" style="padding: 5px 15px 0 15px;text-align: center;font-style: italic;">
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <span t="Searching">Searching</span>...
+      </li>
+      <li if.bind="lastFindPromise && results.length" role="separator" class="divider"></li>
+      <li
+        show.bind="results.length === 0 && !lastFindPromise"
+        class="text-muted"
+        t="No results"
+        css="padding: 5px 15px ${showFooter ? 0 : 5}px 15px;text-align: center;font-style: italic;"
+      >
+        <span t="No results"></span>
+      </li>
+      <template containerless repeat.for="result of results">
+        <li
+          click.trigger="onSelect(result)"
+          style="cursor:pointer"
+          class="${result === selected ? 'au-target active' : 'au-target'}"
+          aria-expanded="true"
+        >
+          <a href="javascript: void(0)" innerhtml.bind="labelWithMatches(result)"></a>
+        </li>
+      </template>
+      <li if.bind="showFooter" role="separator" class="divider"></li>
+      <li if.bind="showFooter" style="padding: 0 9px 4px 9px;" click.trigger="onFooterSelected(value)">
+        <a   class="button is-primary" blur.trigger="setFocus(false, $event)" type="button">
+          <span t="${footerLabel}">${footerLabel}</span>
+        </a>
+      </li>
+        </ul>
+      </div>
+      </div>
+    <p class="control">
+      <!-- TODO: only show edit if value  -->
+      <a
+      if.bind="initValue.length > 0 || value.length > 0"
+      route-href="route: home; params.bind: {route: selected,application: application,resource: resource}"
+       class="button is-info">
+       <span t="edit">edit</span>
+     </a>
+        <a
+         route-href="route: home; params.bind: {route: 'new',application: application, resource: resource}"
+         class="button is-primary">
+         <span t="new">new</span>
+       </a>
+    </p>
+  </div>
+</template>
