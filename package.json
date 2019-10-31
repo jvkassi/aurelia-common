@@ -1,6 +1,6 @@
 {
   "name": "aurelia-common",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A package full of common value converters used across my projects",
   "keywords": [
     "aurelia",
@@ -114,7 +114,7 @@
   "jspm": {
     "registry": "npm",
     "jspmPackage": true,
-    "main": "index",
+    "main": "aurela-common",
     "format": "amd",
     "directories": {
       "dist": "dist/amd"
