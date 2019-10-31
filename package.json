@@ -45,6 +45,7 @@
     "aurelia-dialog": "^2.0.0-rc.8",
     "aurelia-notification": "^1.1.0",
     "aurelia-orm": "^7.0.1",
+    "rollup-plugin-html-entry": "^0.2.0",
     "rollup-plugin-multi-entry": "^2.1.0",
     "typer": "^1.1.0"
   },

@@ -5,6 +5,7 @@ import commonJS from 'rollup-plugin-commonjs';
 import uglify from 'rollup-plugin-uglify';
 import multiEntry from "rollup-plugin-multi-entry";
 import postcss from "rollup-plugin-postcss";
+import htmlEntry from "rollup-plugin-html-entry";
 
 const pkg = JSON.parse(readFileSync('package.json', 'utf-8'));
 
@@ -18,12 +19,13 @@ function when(predicate, opts) {
 function output(target, format, opts = {}) {
   return {
     // input: `src/${pkg.name}.ts`,
-    input: 'src/**/*ts',
+    input: 'src/**/*',
     output: { ...{ file: `dist/${mod}/${pkg.name}${minify ? '.min' : ''}.js`, format, name: pkg.name }, ...opts },
     plugins: [
       multiEntry(),
       resolve(),
       postcss(),
+      htmlEntry(),
       commonJS({
         include: 'node_modules/**'
       }),
