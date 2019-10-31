@@ -1,9 +1,6 @@
 export declare class Dialog {
     private dialog;
-    confirm({ title, text }: {
-        title: string;
-        text?: string;
-    }): Promise<{}>;
+    confirm(title?: string, text?: string): Promise<{}>;
     prompt({ label, title, type, text }: {
         label: string;
         title?: string;
