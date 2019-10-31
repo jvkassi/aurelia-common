@@ -7,8 +7,8 @@ PLATFORM.moduleName("./confirm");
 export class Confirm {
   private controller: DialogController;
   private confirm = {
-    title: "",
-    text: "Vous devez confirmer cette action"
+    title: '',
+    text: ''
   };
 
   constructor(controller: DialogController) {
