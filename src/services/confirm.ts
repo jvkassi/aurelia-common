@@ -7,15 +7,15 @@ PLATFORM.moduleName("./confirm");
 export class Confirm {
   private controller: DialogController;
   private confirm = {
-    title: '',
-    text: ''
-  }
+    title: "",
+    text: "Vous devez confirmer cette action"
+  };
 
   constructor(controller: DialogController) {
     this.controller = controller;
   }
 
-  activate(params: { title: string;  text: string }) {
+  activate(params: { title: string; text: string }) {
     this.confirm = params;
   }
 }
