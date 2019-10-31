@@ -1,9 +1,28 @@
-# Aurelia ERP Common (WIPs)
+# Aurelia Common (WIPs)
 
-This is my first try to develop an ERP with Aurelia.
-This plugin contain all helper functions for the ERP
+This is my list of converters and elements, I use across my projects.
 
-TODO:
+# How to install
+
+```bash
+npm install aurelia-common
+```
+
+# How to use
+
+
+Add the plugin in your main.js file
+
+```
+aurelia.use.standardConfiguration()
+  .use.plugin(PLATFORM.moduleName('aurelia-common'))
+```
+
+# Converters
+
+....
+
+# TODO:
 
 * Documentation
 * Testing
