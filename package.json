@@ -1,7 +1,7 @@
 {
-  "name": "aurelia-comon",
+  "name": "aurelia-common",
   "version": "0.0.2",
-  "description": "A skeleton project with basic configuration for developing an Aurelia plugin in TypeScript that utilizes webpack",
+  "description": "A package full of common value converters used across my projects",
   "keywords": [
     "aurelia",
     "skeleton",
@@ -9,17 +9,17 @@
     "typescript",
     "webpack"
   ],
-  "homepage": "https://github.com/jvkassi/aurelia-comon",
+  "homepage": "https://github.com/jvkassi/aurelia-common",
   "bugs": {
-    "url": "https://github.com/jvkassi/aurelia-comon/issues"
+    "url": "https://github.com/jvkassi/aurelia-common/issues"
   },
   "license": "MIT",
   "author": "KASSI Jean-Vinicnet <jeanvincent45@gmail.com>",
-  "main": "dist/commonjs/aurelia-comon.js",
-  "typings": "dist/commonjs/aurelia-comon.d.ts",
+  "main": "dist/commonjs/aurelia-common.js",
+  "typings": "dist/commonjs/aurelia-common.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jvkassi/aurelia-comon"
+    "url": "https://github.com/jvkassi/aurelia-common"
   },
   "scripts": {
     "lint": "cross-env ./node_modules/.bin/nps lint",
@@ -126,9 +126,9 @@
     "import": {
       "dependencies": [
         {
-          "name": "aurelia-comon",
-          "path": "../node_modules/aurelia-comon/dist/amd",
-          "main": "aurelia-comon"
+          "name": "aurelia-common",
+          "path": "../node_modules/aurelia-common/dist/amd",
+          "main": "aurelia-common"
         }
       ]
     }
