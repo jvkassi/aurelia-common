@@ -1,6 +1,6 @@
 {
-  "name": "aurelia-erp-common",
-  "version": "0.5.2",
+  "name": "aurelia-comon",
+  "version": "0.0.2",
   "description": "A skeleton project with basic configuration for developing an Aurelia plugin in TypeScript that utilizes webpack",
   "keywords": [
     "aurelia",
@@ -9,17 +9,17 @@
     "typescript",
     "webpack"
   ],
-  "homepage": "https://github.com/aurelia-contrib/aurelia-erp-common",
+  "homepage": "https://github.com/jvkassi/aurelia-comon",
   "bugs": {
-    "url": "https://github.com/aurelia-contrib/aurelia-erp-common/issues"
+    "url": "https://github.com/jvkassi/aurelia-comon/issues"
   },
   "license": "MIT",
   "author": "KASSI Jean-Vinicnet <jeanvincent45@gmail.com>",
-  "main": "dist/commonjs/aurelia-erp-common.js",
-  "typings": "dist/commonjs/aurelia-erp-common.d.ts",
+  "main": "dist/commonjs/aurelia-comon.js",
+  "typings": "dist/commonjs/aurelia-comon.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aurelia-contrib/aurelia-erp-common"
+    "url": "https://github.com/jvkassi/aurelia-comon"
   },
   "scripts": {
     "lint": "cross-env ./node_modules/.bin/nps lint",
@@ -40,16 +40,12 @@
     "ghpages-setup": "cross-env ./node_modules/.bin/nps ghpages.setup"
   },
   "dependencies": {
-    "aurelia-authentication": "^3.8.3",
-    "aurelia-configuration": "^2.0.0",
     "aurelia-dialog": "^2.0.0-rc.8",
-    "aurelia-notification": "^1.1.0",
-    "aurelia-orm": "^7.0.1",
-    "rollup-plugin-html-entry": "^0.2.0",
-    "rollup-plugin-multi-entry": "^2.1.0",
-    "typer": "^1.1.0"
+    "aurelia-notification": "^1.1.0"
   },
   "devDependencies": {
+    "rollup-plugin-html-entry": "^0.2.0",
+    "rollup-plugin-multi-entry": "^2.1.0",
     "@types/bluebird-global": "^3.5.5",
     "@types/extract-text-webpack-plugin": "^3.0.2",
     "@types/html-webpack-plugin": "^2.30.3",
@@ -130,9 +126,9 @@
     "import": {
       "dependencies": [
         {
-          "name": "aurelia-erp-common",
-          "path": "../node_modules/aurelia-erp-common/dist/amd",
-          "main": "aurelia-erp-common"
+          "name": "aurelia-comon",
+          "path": "../node_modules/aurelia-comon/dist/amd",
+          "main": "aurelia-comon"
         }
       ]
     }
