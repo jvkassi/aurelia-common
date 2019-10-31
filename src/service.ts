@@ -7,14 +7,8 @@ export class Service {
 
   constructor(protected EntityManager: EntityManager) {}
 
-  public get(id = undefined): any {
-    if (id) {
-      return this.EntityManager.getRepository(this.entity).find(id);
-    }
-    return this.EntityManager.getRepository(this.entity).find();
-  }
-
-  public getAll(filters = {}): any {
+  public find(filters: number | Object | undefined): any {
     return this.EntityManager.getRepository(this.entity).find(filters);
   }
+
 }
