@@ -22,7 +22,3 @@ export function configure(config: FrameworkConfiguration): void {
   ]);
 }
 
-export {
-  Confirm,
-  Prompt
-};
