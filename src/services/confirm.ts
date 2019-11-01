@@ -1,18 +1,21 @@
 import { DialogController } from "aurelia-dialog";
-import { inject, PLATFORM } from "aurelia-framework";
+import { inject, PLATFORM, autoinject } from "aurelia-framework";
 
 PLATFORM.moduleName("./confirm");
 
-@inject(DialogController)
+@autoinject
 export class Confirm {
-  controller = null;
-  confirm = null;
+  private controller: DialogController;
+  private confirm = {
+    title: '',
+    text: ''
+  };
 
-  constructor(controller) {
+  constructor(controller: DialogController) {
     this.controller = controller;
   }
 
-  activate(params) {
+  activate(params: { title: string; text: string }) {
     this.confirm = params;
   }
 }

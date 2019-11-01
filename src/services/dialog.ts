@@ -1,12 +1,16 @@
 import { Prompt } from "./prompt";
 import { Confirm } from "./confirm";
 import { DialogService } from "aurelia-dialog";
+import { autoinject } from "aurelia-framework";
 
+@autoinject()
 export class Dialog {
   private dialog: DialogService;
 
-  public confirm(
-{ title, text = "Vous devez confirmer cette action" }: { title: string; text?: string; }  ) {
+  public async confirm(
+    title: string = "",
+    text: string = "Vous devez confirmer cette action"
+  ): Promise<any> {
     return new Promise((resolve, reject) => {
       this.dialog
         .open({
@@ -21,13 +25,17 @@ export class Dialog {
           if (response.wasCancelled) {
             reject("cancelled");
           }
-          resolve(response)
+          resolve(response);
         });
     });
   }
 
-  public prompt(
-{ label, title = "Prompt", type = "text", text = "Vous devez remplir cette information" }: { label: string; title?: string; type?: string; text?: string; }  ) {
+  public async prompt(
+    label: string,
+    title: string = "Prompt",
+    type: string = "text",
+    text: string = "Vous devez remplir cette information"
+  ): Promise<any> {
     return new Promise((resolve, reject) => {
       this.dialog
         .open({

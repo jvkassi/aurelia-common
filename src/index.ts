@@ -1,5 +1,4 @@
-import { Prompt } from './services/prompt';
-import { Confirm } from './services/confirm';
+import { Dialog } from './services/dialog';
 import { FrameworkConfiguration } from "aurelia-framework";
 import { PLATFORM } from "aurelia-pal";
 
@@ -22,3 +21,4 @@ export function configure(config: FrameworkConfiguration): void {
   ]);
 }
 
+export { Dialog }
