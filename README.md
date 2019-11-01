@@ -10,12 +10,11 @@ npm install aurelia-common
 
 # How to use
 
-
 Add the plugin in your main.js file
 
-```
+```ts
 aurelia.use.standardConfiguration()
-  .use.plugin(PLATFORM.moduleName('aurelia-common'))
+  .plugin(PLATFORM.moduleName('aurelia-common'))
 ```
 
 # Converters

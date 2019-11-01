@@ -21,4 +21,3 @@ export function configure(config: FrameworkConfiguration): void {
   ]);
 }
 
-export { Dialog };
