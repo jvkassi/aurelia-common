@@ -1,15 +1,15 @@
 import {
   customAttribute,
-  inject,
+  autoinject,
   bindingMode
 }
 from 'aurelia-framework';
 
 @customAttribute('selected', bindingMode.twoWay)
-@inject(Element)
+@autoinject()
 export class Selected {
 
-  private element: Element;
+  constructor(private element: Element) {};
 
   valueChanged(newValue: any) {
 
