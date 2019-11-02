@@ -1,6 +1,6 @@
 import { Prompt } from "./prompt";
 import { Confirm } from "./confirm";
-import { DialogService } from "aurelia-DialogService";
+import { DialogService } from "aurelia-dialog";
 import { autoinject } from "aurelia-framework";
 
 @autoinject()
