@@ -1,18 +1,19 @@
 import { Prompt } from "./prompt";
 import { Confirm } from "./confirm";
-import { DialogService } from "aurelia-dialog";
+import { DialogService } from "aurelia-DialogService";
 import { autoinject } from "aurelia-framework";
 
 @autoinject()
 export class Dialog {
-  private dialog: DialogService;
+ 
+  constructor(private DialogService: DialogService) {};
 
   public async confirm(
     title: string = "",
     text: string = "Vous devez confirmer cette action"
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.dialog
+      this.DialogService
         .open({
           viewModel: Confirm,
           model: {
@@ -37,7 +38,7 @@ export class Dialog {
     text: string = "Vous devez remplir cette information"
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.dialog
+      this.DialogService
         .open({
           viewModel: Prompt,
           model: {
