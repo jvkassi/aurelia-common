@@ -1,7 +1,7 @@
 {
   "name": "aurelia-common",
   "description": "Common value-converts and elements i use ",
-  "version": "0.2.0",
+  "version": "0.6.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:jvkassi/aurelia-common.git"
