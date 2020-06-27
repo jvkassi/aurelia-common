@@ -10,6 +10,7 @@ export function configure(config: FrameworkConfiguration): void {
     PLATFORM.moduleName("./value-converters/limit"),
     PLATFORM.moduleName("./value-converters/second"),
     PLATFORM.moduleName("./value-converters/range"),
+    PLATFORM.moduleName("./value-converters/round"),
     PLATFORM.moduleName("./value-converters/datetime"),
     PLATFORM.moduleName("./value-converters/date"),
     PLATFORM.moduleName("./value-converters/capitalize"),
